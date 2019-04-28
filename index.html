@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Element-UI调色板</title>
+    <style media="screen">
+      .wrapper {
+        display: flex;
+        align-items: center;
+      }
+
+      .color {
+        width: 140px;
+        height: 140px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        color: #FFFFFF;
+        cursor: pointer;
+      }
+
+      .color-value {
+        margin-top: 8px;
+      }
+
+      .black {
+        color: #314659;
+      }
+
+      .header {
+        height: 32px;
+        line-height: 32px;
+        margin-bottom: 32px;
+        display: flex;
+        align-items: center;
+      }
+
+      input {
+        height: 32px;
+        line-height: 32px;
+        box-sizing: border-box;
+        padding: 6px 12px;
+        margin-right: 24px;
+        font-size: 14px;
+      }
+
+      body {
+        padding: 32px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <input type="input" id="color" value="" placeholder="输入品牌色">
+      <input type="button" name="button" onClick="evalColor()" value="计算颜色"></input>
+    </div>
+    <div class="wrapper">
+      <div class="color black">
+        Color 1
+        <span class="color-value"></span>
+      </div>
+      <div class="color black">
+        Color 2
+        <span class="color-value"></span>
+      </div>
+      <div class="color black">
+        Color 3
+        <span class="color-value"></span>
+      </div>
+      <div class="color black">
+        Color 4
+        <span class="color-value"></span>
+      </div>
+      <div class="color black">
+        Color 5
+        <span class="color-value"></span>
+      </div>
+      <div class="color">
+        Color 6
+        <span class="color-value"></span>
+      </div>
+      <div class="color">
+        Color 7
+        <span class="color-value"></span>
+      </div>
+      <div class="color">
+        Color 8
+        <span class="color-value"></span>
+      </div>
+      <div class="color">
+        Color 9
+        <span class="color-value"></span>
+      </div>
+      <div class="color">
+        Color 10
+        <span class="color-value"></span>
+      </div>
+    </div>
+    <script type='text/javascript' src='tinycolor.js'></script>
+    <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.1.6/ZeroClipboard.min.js" ></script> -->
+    <script type='text/javascript'>
+      function eval(primary) {
+        var primary = tinycolor(primary)
+        var primary1 = tinycolor.mix(white, primary, 10)
+        var primary2 = tinycolor.mix(white, primary, 20)
+        var primary3 = tinycolor.mix(white, primary, 40)
+        var primary4 = tinycolor.mix(white, primary, 60)
+        var primary5 = tinycolor.mix(white, primary, 80)
+        var primary6 = primary
+        var primary7 = tinycolor.mix(black, primary, 80)
+        var primary8 = tinycolor.mix(black, primary, 60)
+        var primary9 = tinycolor.mix(black, primary, 40)
+        var primary10 = tinycolor.mix(black, primary, 20)
+
+        var primarys = [
+          primary1,
+          primary2,
+          primary3,
+          primary4,
+          primary5,
+          primary6,
+          primary7,
+          primary8,
+          primary9,
+          primary10
+        ]
+
+        var colors = document.getElementsByClassName('color')
+        var colorValues = document.getElementsByClassName('color-value')
+        for (var i = 0; i < colors.length; i++) {
+          colors[i].style.backgroundColor = primarys[i]
+          colorValues[i].innerHTML = primarys[i].toHexString()
+        }
+      }
+
+      function evalColor() {
+        var primary = document.getElementById('color').value
+        eval(primary)
+      }
+
+      var primary = '#1890ff'
+      var white = tinycolor('#FFFFFF')
+      var black = tinycolor('#000000')
+      eval(primary)
+    </script>
+  </body>
+</html>
